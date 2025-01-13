@@ -14,10 +14,11 @@ app.get(
   "/manifest",
   unpackHonoRequest(createManifestHandler({
     async manifestFactory({ appBaseUrl }) {
+      const awsBaseUrl = `${appBaseUrl}/prod`;
       return {
         name: "Saleor App Template",
-        tokenTargetUrl: `${appBaseUrl}/api/register`,
-        appUrl: `${appBaseUrl}/app`,
+        tokenTargetUrl: `${awsBaseUrl}/api/register`,
+        appUrl: `${awsBaseUrl}/app`,
         permissions: [
           "MANAGE_ORDERS",
         ],
