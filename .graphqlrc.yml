@@ -1,0 +1,19 @@
+schema: lambda/graphql/schema.graphql
+documents: [lambda/**/*.ts, lambda/**/*.tsx, lambda/**/*.graphql]
+extensions:
+  codegen:
+    overwrite: true
+    generates:
+      lambda/generated/graphql.ts:
+        config:
+          dedupeFragments: true
+          # Reduces bundle size
+          enumsAsTypes: true
+        plugins:
+          - typescript
+          - typescript-operations
+          - urql-introspection
+          - typescript-urql:
+              documentVariablePrefix: "Untyped"
+              fragmentVariablePrefix: "Untyped"
+          - typed-document-node
