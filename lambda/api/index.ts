@@ -25,6 +25,8 @@ app.get(
         id: "saleor.app.hono-aws-lambda",
         version: "0.0.1",
         webhooks: [
+          // Uses new URL constructor, base must have `/` at the end
+          // https://developer.mozilla.org/en-US/docs/Web/API/URL/URL#base
           orderCreatedWebhook.getWebhookManifest(awsBaseUrl + "/"),
         ],
         extensions: [],
