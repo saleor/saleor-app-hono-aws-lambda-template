@@ -11,6 +11,11 @@ const getBaseUrl = (url: string) => {
 };
 
 app.get("/", (c) => {
+  // We have access to AWS Lambda context and event
+  // https://hono.dev/docs/getting-started/aws-lambda#access-requestcontext
+  console.log("requestId: ", c.env.lambdaContext.awsRequestId);
+  console.log("isBase64Encoded ", c.env.event.isBase64Encoded)
+
   const baseUrl = getBaseUrl(c.req.url);
 
   return c.html(

@@ -21,7 +21,7 @@ app.get(
         permissions: [
           "MANAGE_ORDERS",
         ],
-        id: "saleor.app.hono-deno",
+        id: "saleor.app.hono-aws-lambda",
         version: "0.0.1",
         webhooks: [
           orderCreatedWebhook.getWebhookManifest(appBaseUrl),
