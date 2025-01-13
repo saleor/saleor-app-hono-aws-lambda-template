@@ -25,7 +25,7 @@ app.get(
         id: "saleor.app.hono-aws-lambda",
         version: "0.0.1",
         webhooks: [
-          orderCreatedWebhook.getWebhookManifest(appBaseUrl),
+          orderCreatedWebhook.getWebhookManifest(awsBaseUrl + "/"),
         ],
         extensions: [],
         author: "Jonatan Witoszek",
