@@ -3,6 +3,10 @@ import { Construct } from 'constructs'
 import * as lambda from 'aws-cdk-lib/aws-lambda'
 import * as apigw from 'aws-cdk-lib/aws-apigateway'
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs'
+import { config } from 'dotenv';
+
+// Load files from .env
+config();
 
 export class SaleorAppHonoAwsLambdaTemplateStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -11,7 +15,12 @@ export class SaleorAppHonoAwsLambdaTemplateStack extends cdk.Stack {
     const fn = new NodejsFunction(this, 'lambda', {
       entry: "lambda/index.tsx",
       handler: "handler",
-      runtime: lambda.Runtime.NODEJS_22_X
+      runtime: lambda.Runtime.NODEJS_22_X,
+      environment: {
+        APL: process.env.APL!,
+        UPSTASH_URL: process.env.UPSTASH_URL!,
+        UPSTASH_TOKEN: process.env.UPSTASH_TOKEN!,
+      }
     });
 
     fn.addFunctionUrl({
