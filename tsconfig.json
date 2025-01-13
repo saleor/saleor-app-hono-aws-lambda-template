@@ -24,7 +24,13 @@
       "./node_modules/@types"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "baseUrl": "./lambda",
+    "paths": {
+      "@/generated": [
+        "generated"
+      ]
+    }
   },
   "exclude": [
     "node_modules",
